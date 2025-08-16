@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claim Janmashtami Special ₹100</title>
+<style>
+  :root{
+    --peacock:#1e40af;
+    --golden:#fbbf24;
+    --saffron:#f59e0b;
+    --white:#ffffff;
+    --card:#1e1b4bf5;
+    --text:#ffffff;
+    --muted:#d1d5db;
+    --stroke:#2d3748;
+    --success1:#22c55e;
+    --success2:#16a34a;
+    --lotus:#ec4899;
+    --divine:#8b5cf6;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(135deg, var(--peacock) 0%, var(--divine) 35%, var(--lotus) 65%, var(--golden) 100%);
+    color:var(--text);
+    min-height:100svh;
+    display:flex;align-items:center;justify-content:center;
+    padding:20px;
+  }
+  .card{
+    width:100%; max-width:520px;
+    background:linear-gradient(180deg, rgba(30,27,75,.95), rgba(30,27,75,.98));
+    border:2px solid var(--golden); border-radius:20px;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    padding:28px 24px 32px;
+    backdrop-filter: blur(8px);
+    position:relative;
+    overflow:hidden;
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;
+    height:5px;
+    background:linear-gradient(90deg, var(--peacock) 25%, var(--golden) 50%, var(--lotus) 75%);
+  }
+  .divine-stripe{
+    position:absolute;
+    right:0;top:0;bottom:0;
+    width:8px;
+    background:linear-gradient(180deg, var(--peacock) 25%, var(--golden) 50%, var(--lotus) 75%);
+  }
+  
+  h1{
+    margin:0 0 12px;font-size:1.8rem;font-weight:900;text-align:center;
+    background:linear-gradient(45deg, var(--peacock), var(--golden), var(--lotus));
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+  }
+  .sub{
+    color:var(--muted);font-size:1.05rem;margin-bottom:24px;text-align:center;
+    text-shadow:0 2px 4px rgba(0,0,0,.5);
+    font-weight:500;
+  }
+  
+  .celebration{
+    text-align:center;margin-bottom:20px;
+  }
+  .krishna-icon{
+    font-size:1.8rem;margin:0 6px;
+    animation:dance 2s ease-in-out infinite;
+  }
+  @keyframes dance{
+    0%,100%{ transform:rotate(0deg) scale(1); }
+    25%{ transform:rotate(5deg) scale(1.1); }
+    75%{ transform:rotate(-5deg) scale(1.1); }
+  }
+
+  .field{
+    display:flex;gap:10px;margin-bottom:18px;
+  }
+  .input{
+    flex:1; background:rgba(30,27,75,.8); color:var(--white);
+    border:2px solid var(--golden); border-radius:12px; padding:12px 16px;
+    font-size:1rem; outline:none;
+    transition:all .3s ease;
+    backdrop-filter:blur(4px);
+  }
+  .input:focus{ 
+    border-color:var(--lotus); 
+    box-shadow:0 0 0 4px rgba(236,72,153,.2);
+    background:rgba(30,27,75,.95);
+  }
+  .input::placeholder{
+    color:var(--muted);
+  }
+
+  .join-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:12px;
+    margin-bottom:20px;
+  }
+  .join{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    border-radius:14px; padding:14px 12px; text-decoration:none; 
+    color:#000; font-weight:700; letter-spacing:.3px; font-size:.95rem;
+    background:linear-gradient(135deg, var(--white), #f8f9fa);
+    border:2px solid var(--golden);
+    box-shadow:0 8px 25px rgba(251,191,36,.3);
+    transition: all .3s ease;
+    position:relative;
+    overflow:hidden;
+    text-transform:uppercase;
+  }
+  .join::before{
+    content:"";
+    position:absolute;left:0;top:0;bottom:0;
+    width:4px;
+    background:linear-gradient(180deg, var(--peacock), var(--lotus));
+  }
+  .join:hover{ 
+    transform: translateY(-2px); 
+    box-shadow:0 10px 28px rgba(251,191,36,.4);
+    border-color:var(--lotus);
+  }
+  .join.done{ 
+    background:linear-gradient(135deg, var(--success1), var(--success2));
+    color:white;
+    border-color:var(--success2);
+  }
+  .join .telegram-icon{
+    width:18px;
+    height:18px;
+    background:#0088cc;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:12px;
+    font-weight:900;
+    flex-shrink:0;
+  }
+  .join.done .telegram-icon{ 
+    background: var(--success1); 
+    box-shadow:0 0 12px rgba(34,197,94,.6);
+  }
+
+  .cta{
+    width:100%; margin-top:24px; appearance:none; border:0; cursor:not-allowed;
+    padding:18px 24px; border-radius:14px; font-weight:900; 
+    letter-spacing:.8px; font-size:1.1rem;
+    color:#000;
+    background:linear-gradient(135deg, #9ca3af, #6b7280);
+    box-shadow:0 10px 25px rgba(0,0,0,.25); 
+    opacity:.6;
+    transition: all .3s ease;
+    text-transform:uppercase;
+  }
+  .cta.active{
+    cursor:pointer; opacity:1;
+    background:linear-gradient(135deg, var(--golden), var(--saffron));
+    box-shadow:0 12px 35px rgba(245,158,11,.5);
+    border:2px solid var(--golden);
+  }
+  .cta.active:hover{
+    transform: translateY(-3px);
+    box-shadow:0 18px 45px rgba(245,158,11,.7);
+  }
+  .cta.active:active{ 
+    transform: translateY(1px) scale(.98); 
+  }
+
+  /* Modal */
+  .overlay{
+    position:fixed; inset:0; display:none; place-items:center;
+    background:rgba(2,6,23,.8); backdrop-filter: blur(4px);
+    z-index:1000;
+  }
+  .modal{
+    width:min(92vw,420px); 
+    background:linear-gradient(180deg, rgba(30,27,75,.95), rgba(30,27,75,.98));
+    border:2px solid var(--golden);
+    border-radius:16px; padding:28px; text-align:center;
+    animation: modalPop .4s cubic-bezier(.68,-0.55,.265,1.55);
+    box-shadow:0 30px 60px rgba(0,0,0,.5);
+    position:relative;
+    overflow:hidden;
+  }
+  .modal::before{
+    content:"";
+    position:absolute;top:0;left:0;right:0;
+    height:4px;
+    background:linear-gradient(90deg, var(--peacock), var(--golden), var(--lotus));
+  }
+  @keyframes modalPop{ 
+    from{ transform: scale(.8) translateY(-20px); opacity:0; } 
+    to{ transform: scale(1) translateY(0); opacity:1; } 
+  }
+  .check{
+    width:96px;height:96px;border-radius:50%;margin:4px auto 16px;
+    background: linear-gradient(135deg, var(--golden), var(--saffron));
+    display:grid;place-items:center;
+    border:3px solid var(--white);
+    box-shadow:0 8px 25px rgba(245,158,11,.4);
+  }
+  svg{ display:block }
+  .stroke{
+    stroke: var(--white); stroke-width:6; fill:none;
+    stroke-dasharray: 100; stroke-dashoffset: 100; 
+    animation: draw 800ms ease forwards 200ms;
+  }
+  @keyframes draw{ to{ stroke-dashoffset: 0; } }
+  .success-title{ 
+    font-weight:800; font-size:1.3rem; margin:0 0 8px;
+    background:linear-gradient(45deg, var(--peacock), var(--golden), var(--lotus));
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .success-hint{ 
+    color:var(--muted); font-size:1rem; margin:0;
+    text-shadow:0 2px 4px rgba(0,0,0,.3);
+  }
+  
+  .krishna-msg{
+    margin-top:20px;
+    padding:12px;
+    background:rgba(251,191,36,.1);
+    border:1px solid var(--golden);
+    border-radius:8px;
+    font-size:.9rem;
+    color:var(--muted);
+    font-style:italic;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="divine-stripe"></div>
+    
+    <h1>🦚 Janmashtami Special ₹100 🦚</h1>
+    <div class="sub">Complete the steps below to claim your divine blessing</div>
+    
+    <div class="celebration">
+      <span class="krishna-icon">🦚</span>
+      <span class="krishna-icon">🎉</span>
+      <span class="krishna-icon">🦚</span>
+    </div>
+
+    <div class="field">
+      <input id="upi" class="input" type="text" inputmode="text" autocomplete="off" placeholder="Enter your UPI ID (e.g. yourname@upi)">
+    </div>
+
+    <div class="join-grid" id="grid">
+      <a class="join" href="https://t.me/+RAMY6GoClkhkNDZl" target="_blank">
+        <span class="telegram-icon">T</span> Join Channel 1
+      </a>
+      <a class="join" href="https://t.me/+Ycv6tntdeQs5Yjc1" target="_blank">
+        <span class="telegram-icon">T</span> Join Channel 2
+      </a>
+      <a class="join" href="https://t.me/mk_code00001" target="_blank">
+        <span class="telegram-icon">T</span> Join Channel 3
+      </a>
+      <a class="join" href="https://t.me/+rINbvv7uUt8zMWNl" target="_blank">
+        <span class="telegram-icon">T</span> Join Channel 4
+      </a>
+      <a class="join" href="https://t.me/+gIjfWR-LPGxiNTg1" target="_blank">
+        <span class="telegram-icon">T</span> Join Channel 5
+      </a>
+      <a class="join" href="https://t.me/+eT8Wc4KhcipkN2Y1" target="_blank">
+        <span class="telegram-icon">T</span> Join Channel 6
+      </a>
+      <a class="join" href="https://t.me/+69NWqSemXwsyNjY9" target="_blank">
+        <span class="telegram-icon">T</span> Join Channel 7
+      </a>
+      <a class="join" href="https://t.me/+OA0CG80wIollODg9" target="_blank">
+        <span class="telegram-icon">T</span> Join Channel 8
+      </a>
+      <a class="join" href="https://t.me/+IbcHtd7YcfE3N2Y1" target="_blank">
+        <span class="telegram-icon">T</span> Join Channel 9
+      </a>
+      <a class="join" href="https://t.me/+6nfFw7ZXrZQ2NDFl" target="_blank">
+        <span class="telegram-icon">T</span> Join Channel 10
+      </a>
+      <a class="join" href="https://t.me/+v-NlM0dMfUNhNzdl" target="_blank">
+        <span class="telegram-icon">T</span> Join Channel 11
+      </a>
+      <a class="join" href="https://t.me/+nYA-YB5uLaRjYjQ9" target="_blank">
+        <span class="telegram-icon">T</span> Join Channel 12
+      </a>
+      <a class="join" href="https://t.me/+DKqq0RfUktplMTFl" target="_blank">
+        <span class="telegram-icon">T</span> Join Channel 13
+      </a>
+      <a class="join" href="https://t.me/+wD2qnUmKaghhZTg1" target="_blank">
+        <span class="telegram-icon">T</span> Join Channel 14
+      </a>
+      <a class="join" href="https://t.me/+RD2qWbGJ6zlkYWFl" target="_blank">
+        <span class="telegram-icon">T</span> Join Channel 15
+      </a>
+      <a class="join" href="https://t.me/+ZQAf47c0AFM5MmVl" target="_blank">
+        <span class="telegram-icon">T</span> Join Channel 16
+      </a>
+    </div>
+
+    <button id="claim" class="cta" disabled>🎊 Claim Janmashtami Blessing 🎊</button>
+    
+    <div class="krishna-msg">
+      "Sarva-dharman parityajya mam ekam saranam vraja" - Krishna teaches us surrender and devotion 🦚
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div id="overlay" class="overlay">
+    <div class="modal">
+      <div class="check">
+        <svg width="56" height="56" viewBox="0 0 24 24">
+          <path class="stroke" d="M20 7L10 17l-4-4"/>
+        </svg>
+      </div>
+      <p class="success-title">🦚 Blessing Sent Successfully! 🦚</p>
+      <p class="success-hint">₹100 Janmashtami special blessing will be credited to your UPI within 24 hours.</p>
+      <div style="margin-top:16px;font-size:.9rem;color:#fbbf24;">
+        Radhe Radhe! 🙏
+      </div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  const upi = document.getElementById('upi');
+  const joins = Array.from(document.querySelectorAll('.join'));
+  const btn = document.getElementById('claim');
+  const overlay = document.getElementById('overlay');
+
+  let joinedCount = 0;
+
+  const isValidUPI = (v) => /^[a-z0-9._\-]{3,}@[a-z]{2,}$/i.test(v.trim());
+
+  function reevaluate(){
+    const ok = joinedCount === joins.length && isValidUPI(upi.value);
+    btn.toggleAttribute('disabled', !ok);
+    btn.classList.toggle('active', ok);
+  }
+
+  joins.forEach(j=>{
+    j.addEventListener('click', ()=>{
+      if (!j.classList.contains('done')) {
+        j.classList.add('done');
+        joinedCount++;
+        reevaluate();
+      }
+    });
+  });
+
+  upi.addEventListener('input', reevaluate);
+
+  btn.addEventListener('click', ()=>{
+    if (btn.hasAttribute('disabled')) return;
+    overlay.style.display = 'grid';
+    setTimeout(()=>{
+      window.location.href = "https://t.me/+zVlxDAOuKLJkNTU1";
+    }, 2000);
+  });
+})();
+</script>
+</body>
+</html>

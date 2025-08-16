@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Janmashtami Special - Break Matka & Win ₹100</title>
+<style>
+  :root{
+    --peacock:#1e40af;
+    --golden:#fbbf24;
+    --saffron:#f59e0b;
+    --white:#ffffff;
+    --card:#1e1b4bee;
+    --text:#ffffff;
+    --muted:#d1d5db;
+    --shadow:rgba(0,0,0,.35);
+    --lotus:#ec4899;
+    --divine:#8b5cf6;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(135deg, var(--peacock) 0%, var(--divine) 35%, var(--lotus) 65%, var(--golden) 100%);
+    color:var(--text);
+    min-height:100svh;
+    display:flex;align-items:center;justify-content:center;
+    padding:20px;
+  }
+  .wrap{
+    width:100%;
+    max-width:520px;
+  }
+  .card{
+    background:linear-gradient(180deg, rgba(30,27,75,.95), rgba(30,27,75,.98));
+    border:2px solid var(--golden);
+    border-radius:20px;
+    box-shadow:0 20px 60px var(--shadow);
+    padding:28px 24px 32px;
+    text-align:center;
+    backdrop-filter: blur(8px);
+    position:relative;
+    overflow:hidden;
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;
+    height:4px;
+    background:linear-gradient(90deg, var(--peacock), var(--golden), var(--lotus));
+  }
+  h1{
+    font-size:1.8rem;margin:0 0 12px;font-weight:900;
+    background:linear-gradient(45deg, var(--peacock), var(--golden), var(--lotus));
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-shadow:none;
+    letter-spacing:.8px;
+  }
+  .sub{
+    color:var(--muted);font-size:1.05rem;margin-bottom:28px;
+    text-shadow:0 2px 4px rgba(0,0,0,.5);
+    font-weight:500;
+  }
+  .krishna-icon{
+    font-size:2rem;margin:0 8px;
+    filter:drop-shadow(0 2px 4px rgba(0,0,0,.3));
+  }
+  
+  /* Matka Grid */
+  .matka-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin:20px 0 24px;
+    max-width:320px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .matka{
+    aspect-ratio:1;
+    background:linear-gradient(135deg, #8b4513, #a0522d);
+    border:3px solid var(--golden);
+    border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    font-size:2.5rem;
+    color:var(--golden);
+    transition:all .4s cubic-bezier(.25,.46,.45,.94);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
+  }
+  .matka::before{
+    content:"🏺";
+    font-size:2.8rem;
+    position:absolute;
+    z-index:1;
+  }
+  .matka::after{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;bottom:0;
+    background:linear-gradient(45deg, transparent, rgba(251,191,36,.1), transparent);
+    opacity:0;
+    transition:opacity .3s ease;
+  }
+  .matka:hover{
+    transform:translateY(-6px) scale(1.08);
+    box-shadow:0 20px 40px rgba(251,191,36,.35);
+    border-color:var(--lotus);
+  }
+  .matka:hover::after{
+    opacity:1;
+  }
+  .matka.clicked{
+    pointer-events:none;
+    animation:matkaBreak 1.5s cubic-bezier(.25,.46,.45,.94) forwards;
+  }
+  .matka.winner{
+    background:linear-gradient(135deg, var(--golden), var(--saffron), var(--lotus));
+    color:#000;
+    font-size:1.5rem;
+    font-weight:900;
+    border-color:var(--white);
+    box-shadow:0 0 60px rgba(251,191,36,.9), 0 20px 40px rgba(245,158,11,.4);
+    text-shadow:0 2px 4px rgba(0,0,0,.3);
+  }
+  .matka.winner::before{
+    content:"💰";
+    font-size:2rem;
+  }
+  .matka.loser{
+    background:linear-gradient(135deg, #374151, #4b5563);
+    color:#9ca3af;
+    opacity:.4;
+    transform:scale(.95);
+  }
+  .matka.loser::before{
+    content:"💔";
+    font-size:2rem;
+  }
+  
+  @keyframes matkaBreak{
+    0%{ 
+      transform:scale(1) rotate(0deg); 
+      opacity:1;
+    }
+    25%{ 
+      transform:scale(1.3) rotate(10deg); 
+      opacity:.8;
+    }
+    50%{ 
+      transform:scale(.8) rotate(-5deg); 
+      opacity:.9;
+    }
+    75%{ 
+      transform:scale(1.4) rotate(8deg); 
+      opacity:.7;
+    }
+    100%{ 
+      transform:scale(1.2) rotate(0deg); 
+      opacity:1;
+    }
+  }
+  
+  .game-instruction{
+    color:var(--muted);
+    font-size:.95rem;
+    margin-bottom:16px;
+    opacity:.9;
+  }
+  
+  /* Result */
+  .result{
+    display:none;
+    margin:24px 0;
+    text-align:center;
+    opacity:0;
+    transform:translateY(20px);
+    animation:resultSlideIn .8s ease-out forwards;
+  }
+  @keyframes resultSlideIn{
+    to{
+      opacity:1;
+      transform:translateY(0);
+    }
+  }
+  .win-text{
+    font-size:1.6rem;
+    font-weight:900;
+    background:linear-gradient(45deg, var(--peacock), var(--golden), var(--lotus));
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    margin:16px 0 20px;
+    animation:winGlow 2s ease-in-out infinite;
+    text-shadow:0 4px 8px rgba(0,0,0,.3);
+    letter-spacing:.5px;
+  }
+  @keyframes winGlow{
+    0%,100%{ filter:drop-shadow(0 0 0 rgba(251,191,36,0)) scale(1); }
+    50%{ filter:drop-shadow(0 0 25px rgba(251,191,36,.8)) scale(1.05); }
+  }
+  
+  .claim-btn{
+    display:none;
+    margin:24px auto 0;
+    text-decoration:none;
+    padding:18px 32px;
+    background:linear-gradient(135deg, var(--golden), var(--saffron));
+    color:#000;
+    font-weight:900;
+    font-size:1.1rem;
+    border-radius:16px;
+    box-shadow:0 12px 35px rgba(245,158,11,.5);
+    transition:all .4s cubic-bezier(.25,.46,.45,.94);
+    letter-spacing:.8px;
+    text-transform:uppercase;
+    border:3px solid var(--golden);
+    position:relative;
+    overflow:hidden;
+    transform:translateY(10px);
+    opacity:0;
+    animation:claimBtnAppear 1s ease-out .5s forwards;
+  }
+  .claim-btn::before{
+    content:"";
+    position:absolute;
+    top:0;left:-100%;right:0;bottom:0;
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,.3), transparent);
+    transition:left .6s ease;
+  }
+  .claim-btn:hover::before{
+    left:100%;
+  }
+  .claim-btn:hover{
+    transform:translateY(-4px) scale(1.05);
+    box-shadow:0 18px 50px rgba(245,158,11,.7);
+    border-color:var(--white);
+  }
+  @keyframes claimBtnAppear{
+    to{
+      transform:translateY(0);
+      opacity:1;
+    }
+  }
+  
+  /* Divine Sparkles */
+  .sparkles{
+    position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:1000;
+  }
+  .sparkles i{
+    position:absolute;width:8px;height:12px;opacity:0;
+    animation:sparkle 2000ms linear forwards;
+  }
+  @keyframes sparkle{
+    0%{ transform:translateY(-10vh) rotate(0deg); opacity:1; }
+    100%{ transform:translateY(110vh) rotate(720deg); opacity:0; }
+  }
+  
+  .krishna-msg{
+    font-size:.9rem;
+    color:var(--muted);
+    margin-top:16px;
+    font-style:italic;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>🦚 Janmashtami Special 🦚</h1>
+      <div class="sub">
+        <span class="krishna-icon">🎉</span>
+        Celebrate Lord Krishna's Birthday
+        <span class="krishna-icon">🎉</span>
+      </div>
+      
+      <div class="game-instruction">
+        Break any matka and win guaranteed makhan prizes! 🧈
+      </div>
+      
+      <div class="matka-grid" id="matkaGrid">
+        <div class="matka" data-prize="₹50"></div>
+        <div class="matka" data-prize="₹75"></div>
+        <div class="matka" data-prize="₹100"></div>
+        <div class="matka" data-prize="₹25"></div>
+        <div class="matka" data-prize="₹200"></div>
+        <div class="matka" data-prize="₹30"></div>
+        <div class="matka" data-prize="₹40"></div>
+        <div class="matka" data-prize="₹60"></div>
+        <div class="matka" data-prize="₹90"></div>
+      </div>
+      
+      <div class="result" id="result">
+        <div class="win-text">🎊 Radhe Radhe! You won ₹100! 🎊</div>
+        <a href="claim.html" class="claim-btn" id="claimBtn">Claim Your Janmashtami Blessing</a>
+      </div>
+      
+      <div class="krishna-msg">
+        "Hare Krishna Hare Krishna Krishna Krishna Hare Hare" 🦚
+      </div>
+    </div>
+  </div>
+  
+  <div class="sparkles" id="sparkles"></div>
+
+<script>
+(function(){
+  const matkas = document.querySelectorAll('.matka');
+  const result = document.getElementById('result');
+  const claimBtn = document.getElementById('claimBtn');
+  let gameStarted = false;
+  
+  // Always win ₹100 (force win on 3rd matka for better UX)
+  const winningMatka = matkas[2]; // 3rd matka
+  winningMatka.dataset.prize = "₹100";
+  
+  matkas.forEach(matka => {
+    matka.addEventListener('click', () => {
+      if (gameStarted) return;
+      gameStarted = true;
+      
+      // Disable all matkas
+      matkas.forEach(m => m.style.pointerEvents = 'none');
+      
+      // Add clicked animation to selected matka
+      matka.classList.add('clicked');
+      
+      setTimeout(() => {
+        revealMatkas(matka);
+      }, 600);
+    });
+  });
+  
+  function revealMatkas(clickedMatka) {
+    matkas.forEach((matka, index) => {
+      setTimeout(() => {
+        if (matka === clickedMatka) {
+          // Winner matka
+          matka.classList.add('winner');
+          matka.innerHTML = '<div style="font-size:1.5rem;font-weight:900;">₹100</div>';
+        } else {
+          // Other matkas
+          matka.classList.add('loser');
+          matka.innerHTML = '<div style="font-size:1.2rem;font-weight:700;">' + matka.dataset.prize + '</div>';
+        }
+      }, index * 150);
+    });
+    
+    // Show result after all matkas revealed
+    setTimeout(() => {
+      showWin();
+      result.style.display = 'block';
+    }, 2000);
+  }
+  
+  function showWin() {
+    claimBtn.style.display = 'inline-block';
+    
+    // Enhanced divine sparkles
+    burstSparkles(200);
+    setTimeout(() => burstSparkles(100), 800); // Second wave
+  }
+  
+  function burstSparkles(count) {
+    const container = document.getElementById('sparkles');
+    const colors = ['#1e40af', '#fbbf24', '#ec4899', '#8b5cf6', '#f59e0b']; // Divine colors
+    
+    for(let i = 0; i < count; i++) {
+      const sparkle = document.createElement('i');
+      const left = Math.random() * 100;
+      const delay = Math.random() * 1500;
+      const duration = 2000 + Math.random() * 1500;
+      const size = 8 + Math.random() * 12;
+      const color = colors[i % colors.length];
+      
+      sparkle.style.left = left + '%';
+      sparkle.style.top = '-15vh';
+      sparkle.style.width = size + 'px';
+      sparkle.style.height = (size * 1.4) + 'px';
+      sparkle.style.background = color;
+      sparkle.style.animationDelay = delay + 'ms';
+      sparkle.style.animationDuration = duration + 'ms';
+      sparkle.style.borderRadius = Math.random() > 0.5 ? '50%' : '3px';
+      sparkle.style.transform = `rotate(${Math.random() * 360}deg)`;
+      sparkle.style.boxShadow = `0 0 ${size/2}px ${color}40`;
+      
+      container.appendChild(sparkle);
+      
+      setTimeout(() => sparkle.remove(), duration + delay + 200);
+    }
+  }
+})();
+</script>
+</body>
+</html>
